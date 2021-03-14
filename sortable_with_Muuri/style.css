@@ -34,7 +34,7 @@
   overflow: hidden;
 }
 
-.item-content ul{
-  overflow: hidden;
-  
+img {
+  width: 100%;
+  height: 100%;
 }
