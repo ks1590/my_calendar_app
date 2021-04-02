@@ -9,4 +9,12 @@ for (let i = 0; i < list.length; i++) {
     list[i].className = "list active"
   }
 
+  list.forEach(elements => {
+    elements.addEventListener("mouseenter", (e) => {
+      let bg = document.querySelector("body");
+      let color = event.target.getAttribute("data-color");
+      bg.style.backgroundColor = color;
+    })
+  })
+
 }

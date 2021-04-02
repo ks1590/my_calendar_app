@@ -119,7 +119,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 
 .navigation ul li:nth-child(1).active ~ .indicator {
@@ -140,4 +140,28 @@ body {
 
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(70px * 4));
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator::before {
+  background: #f53b57;
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator::before {
+  background: #3c40c6;
+  transform: #3c40c6;
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator::before {
+  background: #05c46b;
+  transform: #05c46b;
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator::before {
+  background: #0fbcf9;
+  transform: #0fbcf9;
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator::before {
+  background: #ffa801;
+  transform: #ffa801;
 }
