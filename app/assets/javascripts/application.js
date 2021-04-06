@@ -12,5 +12,15 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery.min
+//= require jquery-ui.min
+//= require moment.min
+//= require fullcalendar.min
+//= require ja
 //= require turbolinks
 //= require_tree .
+
+$(function () {
+  $('#calendar').fullCalendar({
+  });
+});
