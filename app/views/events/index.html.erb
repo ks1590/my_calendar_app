@@ -1,24 +1,44 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
-
-<div id="calendar"></div>
-
 <div id="calendar"></div>
 <div class="modal" id="new_event" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">イベント追加</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="form-group field">
+          <%= form_with(model: @event, remote: true) do |f| %>
+            <div class="form-inputs">
+              <div class="form-group">
+                <%= f.label :title, "予定", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :title, class: "form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :start, "開始時間", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :start, class: "form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :end, "終了時間", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :end, class: "form-control"%>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer actions">
+              <%= f.submit "入力完了", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

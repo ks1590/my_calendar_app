@@ -30,6 +30,9 @@ $(function () {
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
+    events: "/events.json",
+    color: 'yellow',
+    textColor: 'black',
     select: function (startDate, endDate) {
       $('#new_event').modal('show');
     }
