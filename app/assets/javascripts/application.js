@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery.min
+//= require popper
+//= require bootstrap-sprockets
 //= require jquery-ui.min
 //= require moment.min
 //= require fullcalendar.min
@@ -22,5 +24,14 @@
 
 $(function () {
   $('#calendar').fullCalendar({
+    selectable: true,
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    select: function (startDate, endDate) {
+      $('#new_event').modal('show');
+    }
   });
 });
