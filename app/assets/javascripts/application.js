@@ -30,6 +30,31 @@ $(function () {
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
+    selectable: true,
+    selectHelper: true,
+    eventClick: function (calEvent, jsEvent, view) {
+      //カレンダーへのリンクはさせません。
+      // info.jsEvent.preventDefault();
+      $('#edit_event').modal('show');
+    },
+    // eventRender: function (eventObj, el) {
+    //   $(el).popover({
+    //     title: eventObj.title,
+    //     content: eventObj.description,
+    //     trigger: 'hover',
+    //     placement: 'top',
+    //     container: 'body',
+    //     html: true
+    //   });
+    // },
+
+    // dayClick: function (d, a, j, v) {
+    //   $("#calendar").fullCalendar("clientEvents", function (e) {
+    //     if (moment(d).format("YYYY-MM-DD") === moment(e.start).format("YYYY-MM-DD")) {
+    //       alert(e.title);
+    //     }
+    //   });
+    // },
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
