@@ -22,7 +22,9 @@
 //= require turbolinks
 //= require_tree .
 
-$(function () {
+
+let initialize_calendar;
+initialize_calendar = function () {
   $('#calendar').fullCalendar({
     selectable: true,
     header: {
@@ -47,19 +49,19 @@ $(function () {
     //     html: true
     //   });
     // },
-
-    // dayClick: function (d, a, j, v) {
-    //   $("#calendar").fullCalendar("clientEvents", function (e) {
-    //     if (moment(d).format("YYYY-MM-DD") === moment(e.start).format("YYYY-MM-DD")) {
-    //       alert(e.title);
-    //     }
-    //   });
-    // },
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
-    select: function (startDate, endDate) {
-      $('#new_event').modal('show');
+    select: function (start) {
+      $.getScript('/events/new', function () {
+        let str = moment(start).format('YYYY-MM-DD');
+        console.log(str);
+        $(".start_hidden").val(str);
+        $('#new_event').modal('show');
+      })
+
     }
-  });
-});
+  })
+};
+
+$(document).on("turbolinks:load", initialize_calendar);

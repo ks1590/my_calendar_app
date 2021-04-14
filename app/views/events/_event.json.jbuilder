@@ -1,4 +1,5 @@
 json.id @event.id
+json.date @event.date
 json.title @event.title
-json.start @event.start
-json.end @event.end
+json.amount @event.amount
+json.note @event.note
