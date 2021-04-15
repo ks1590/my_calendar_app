@@ -27,13 +27,15 @@ let initialize_calendar;
 initialize_calendar = function () {
   $('#calendar').fullCalendar({
     selectable: true,
+    dayMaxEvents: true,
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+      // right: 'month'
     },
     selectable: true,
     selectHelper: true,
+
     eventClick: function (calEvent, jsEvent, view) {
       //カレンダーへのリンクはさせません。
       // info.jsEvent.preventDefault();
@@ -48,17 +50,17 @@ initialize_calendar = function () {
     //     container: 'body',
     //     html: true
     //   });
-    // },
+    // },   
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
     select: function (start) {
-      $.getScript('/events/new', function () {
-        let str = moment(start).format('YYYY-MM-DD');
-        console.log(str);
-        $(".start_hidden").val(str);
-        $('#new_event').modal('show');
-      })
+
+      let str = moment(start).format('YYYY-MM-DD');
+      console.log(str);
+      $(".start_hidden").val(str);
+      $('#new_event').modal('show');
+      // $.getScript('/events/new', function () {})
 
     }
   })
