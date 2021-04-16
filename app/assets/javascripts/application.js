@@ -35,6 +35,9 @@ initialize_calendar = function () {
     },
     selectable: true,
     selectHelper: true,
+    eventLimit: true,
+    editable: true,
+    disableDragging: true,
 
     eventClick: function (calEvent, jsEvent, view) {
       //カレンダーへのリンクはさせません。
@@ -59,9 +62,17 @@ initialize_calendar = function () {
       let str = moment(start).format('YYYY-MM-DD');
       console.log(str);
       $(".start_hidden").val(str);
-      $('#new_event').modal('show');
+      $('#edit_event').modal('show');
       // $.getScript('/events/new', function () {})
+    },
 
+    eventClick: function (event, jsEvent, view) {
+      $.getScript(event.edit_url, function () {
+        // $('#event_date_range').val(moment(event.start).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end).format("MM/DD/YYYY HH:mm"))
+        // date_range_picker();
+        $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
+        // $('.end_hidden').val(moment(event.end).format('YYYY-MM-DD HH:mm'));
+      });
     }
   })
 };
