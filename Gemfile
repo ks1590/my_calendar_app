@@ -6,6 +6,7 @@ ruby '2.6.5'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'bootstrap', '~> 4.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

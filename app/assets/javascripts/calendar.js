@@ -13,39 +13,39 @@ initialize_calendar = function () {
     eventLimit: true,
     editable: true,
     disableDragging: true,
-
-    eventClick: function (calEvent, jsEvent, view) {
-      //カレンダーへのリンクはさせません。
-      // info.jsEvent.preventDefault();
-      $('#new_event').modal('show');
-    },
-    // eventRender: function (eventObj, el) {
-    //   $(el).popover({
-    //     title: eventObj.title,
-    //     content: eventObj.description,
-    //     trigger: 'hover',
-    //     placement: 'top',
-    //     container: 'body',
-    //     html: true
-    //   });
-    // },   
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
-    select: function (start) {
 
-      let str = moment(start).format('YYYY-MM-DD');
-      console.log(str);
-      $(".start_hidden").val(str);
-      $('#new_event').modal('show');
-      // $.getScript('/events/new', function () {})
+    select: function (start) {
+      $.getScript("/events/new", function () {
+        let str = moment(start).format('YYYY-MM-DD');
+        console.log(str);
+        $(".start_hidden").val(str);
+        $('#new_event').modal('show');
+      })
     },
 
-    eventClick: function (event) {
+    eventClick: function (event, jsEvent, view) {
       $.getScript(event.edit_url, function () {
-        $('.start_hidden').val(moment(event.start).format('YYYY-MM-DD HH:mm'));
-      });
-    }
+        let str = moment(event).format('YYYY-MM-DD');
+        console.log(event);
+        // $(".start_hidden").val(event);
+        $('#edit_event').modal('show');
+        $.ajax({
+          url: event.update_url,
+          data: event_data,
+          type: 'PATCH'
+        });
+      })
+    },
+
+    // eventClick: function (start) {
+    //   let str = moment(start).format('YYYY-MM-DD');
+    //   console.log(str);
+    //   $(".start_hidden").val(str);
+    //   $('#new_event').modal('show');
+    // }
   })
 };
 
