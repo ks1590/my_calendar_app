@@ -1,9 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit]
+  before_action :set_event, only: [:edit, :update]
 
   def index
     @event = Event.new
     @events = Event.all
+  end
+
+  def new
+    @event = Event.new
   end
 
   def create
@@ -13,7 +17,10 @@ class EventsController < ApplicationController
 
   def edit    
   end
-  
+
+  def update
+    @event.update(event_params)
+  end  
   
   private
   def set_event

@@ -1,12 +1,50 @@
-<div class="modal fade" id="edit_event">
-  <div class="modal-dialog">
+<div class="modal" id="edit_event" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Edit Event</h4>
+        <h5 class="modal-title">取引内容</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        <%= render 'form', event: @event %>
+        <div class="form-group field">
+          <%= form_with(model: @event, remote: true) do |f| %>
+            <div class="form-inputs">
+              <div class="form-group">
+                <%= f.label :date, "日付", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%# <%= f.date_field :date,as: :hidden, value: Date.today, class: "form-control start_hidden"%>
+                  <%= f.date_field :date, class: "form-control start_hidden"%>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :title, "カテゴリー", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :title, class: "form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :amount, "金額", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :amount, class: "form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :note, "メモ", class: "form-control-label"%>
+                <div class="input-group" data-target-input="nearest">
+                  <%= f.text_field :note, class: "form-control"%>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer actions">
+              <%= f.submit "入力完了", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
