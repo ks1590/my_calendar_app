@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update]
+  before_action :set_event, only: [:edit, :update, :destroy]
 
   def index
     @event = Event.new
     @events = Event.all
+    # @events = Event.pluck(:id, :date, "CONCAT_WS(' ', title, amount) as title", :amount, :note) 
   end
 
   def new
@@ -21,6 +22,10 @@ class EventsController < ApplicationController
   def update
     @event.update(event_params)
   end  
+
+  def destroy
+    @event.destroy
+  end
   
   private
   def set_event
@@ -28,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:date,:title, :amount, :note)
+    params.require(:event).permit(:id, :date,:title, :amount, :note)
   end
   
 end
