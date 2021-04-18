@@ -27,16 +27,17 @@ initialize_calendar = function () {
     },
 
     eventClick: function (event, jsEvent, view) {
+      console.log(event);
       $.getScript(event.edit_url, function () {
         let str = moment(event).format('YYYY-MM-DD');
         console.log(event);
         // $(".start_hidden").val(event);
         $('#edit_event').modal('show');
-        $.ajax({
-          url: event.update_url,
-          data: event_data,
-          type: 'PATCH'
-        });
+        // $.ajax({
+        //   url: event.update_url,
+        //   data: event_data,
+        //   type: 'PATCH'
+        // });
       })
     },
 
