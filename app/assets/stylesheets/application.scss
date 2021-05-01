@@ -16,3 +16,43 @@
 @import "fullcalendar.min";
 @import "fullcalendar.min";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,300;0,500;0,700;1,100&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: rgb(241, 240, 240);
+}
+
+#calendar {
+  background: #fff;
+  box-shadow: 2px 3px 15px #999;
+  width: 95%;
+  height: 100%;
+  margin: 0 25px;
+  border-radius: 30px;
+}
+
+.fc-day .fc-widget-content .fc-sat .fc-other-month .fc-future {
+  border-radius: 30px;
+}
+
+.fc-next-button {
+  border-radius: 50% !important;
+}
+
+.fc-prev-button {
+  border-radius: 50% !important;
+}
+
+.fc-today-button {
+  border-radius: 50% !important;
+  margin-right: 20px !important;
+}

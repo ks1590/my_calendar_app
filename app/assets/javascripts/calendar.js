@@ -7,6 +7,11 @@ initialize_calendar = function () {
     //   left: 'prev,next today',
     //   center: 'title',
     //   // right: 'month'
+    header: {
+      right: 'prev,next today',
+      center: 'title',
+      left: ''
+    },
     // },
     // height: window.innerHeight - 80, // ①
     // windowResize: function () { // ②
