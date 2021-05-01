@@ -3,11 +3,16 @@ initialize_calendar = function () {
   $('#calendar').fullCalendar({
     selectable: true,
     dayMaxEvents: true,
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      // right: 'month'
-    },
+    // header: {
+    //   left: 'prev,next today',
+    //   center: 'title',
+    //   // right: 'month'
+    // },
+    // height: window.innerHeight - 80, // ①
+    // windowResize: function () { // ②
+    //   $('#calendar').fullCalendar('option', 'height', window.innerHeight - 80);
+    //   $('#calendar').fullCalendar('option', 'width', window.innerWidth - 200);
+    // },
     selectable: true,
     selectHelper: true,
     eventLimit: true,
