@@ -19,6 +19,7 @@
 //= require moment.min
 //= require fullcalendar.min
 //= require ja
+//= require autonumeric
 //= require turbolinks
 //= require_tree .
 

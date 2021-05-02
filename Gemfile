@@ -10,6 +10,8 @@ gem 'jquery-ui-rails'
 
 gem 'font-awesome-sass', '~> 5.8.1'
 
+gem 'autonumeric-rails'
+
 gem 'faker'
 
 gem 'bootstrap', '~> 4.5.3'
