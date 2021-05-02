@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.new
-    @events = Event.joins(:payment)
+    @events = Event.joins(:payment).joins(:category)
     # @events = Event.pluck(:id, :date, "CONCAT_WS(' ', title, amount) as title", :amount, :note) 
   end
 
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:id, :date,:title, :amount, :note, :payment_id)
+    params.require(:event).permit(:id, :date,:title, :amount, :note, :payment_id, :category_id)
   end
   
 end
