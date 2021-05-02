@@ -66,6 +66,8 @@ GEM
     crass (1.0.6)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.17.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.0)
     font-awesome-sass (5.8.1)
       sassc (>= 1.11)
@@ -200,6 +202,7 @@ DEPENDENCIES
   bootstrap (~> 4.5.3)
   byebug
   coffee-rails (~> 4.2)
+  faker
   font-awesome-sass (~> 5.8.1)
   fullcalendar-rails
   jbuilder (~> 2.5)
