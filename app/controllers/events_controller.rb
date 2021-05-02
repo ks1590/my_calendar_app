@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   def index
     @event = Event.new
     @events = Event.joins(:payment).joins(:category)
-    # @events = Event.pluck(:id, :date, "CONCAT_WS(' ', title, amount) as title", :amount, :note) 
+    
+    @current_week = Event.current_week.sum(:amount)
+    @current_month = Event.current_month.sum(:amount)
+    @last_month = Event.last_month.sum(:amount)
+    @current_year = Event.current_year.sum(:amount)    
   end
 
   def new
