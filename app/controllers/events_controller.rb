@@ -1,14 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy]
-
+  
   def index
     @event = Event.new
     @events = Event.joins(:payment).joins(:category)
-    
     @current_week = Event.current_week.sum(:amount)
     @current_month = Event.current_month.sum(:amount)
     @last_month = Event.last_month.sum(:amount)
-    @current_year = Event.current_year.sum(:amount)    
+    @current_year = Event.current_year.sum(:amount)
   end
 
   def new
@@ -17,7 +16,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
+    @event.save        
+    @current_week = Event.current_week.sum(:amount)
+    @current_month = Event.current_month.sum(:amount)
+    @last_month = Event.last_month.sum(:amount)
+    @current_year = Event.current_year.sum(:amount)    
   end
 
   def edit    
@@ -25,10 +28,18 @@ class EventsController < ApplicationController
 
   def update
     @event.update(event_params)
+    @current_week = Event.current_week.sum(:amount)
+    @current_month = Event.current_month.sum(:amount)
+    @last_month = Event.last_month.sum(:amount)
+    @current_year = Event.current_year.sum(:amount)
   end  
 
   def destroy
     @event.destroy
+    @current_week = Event.current_week.sum(:amount)
+    @current_month = Event.current_month.sum(:amount)
+    @last_month = Event.last_month.sum(:amount)
+    @current_year = Event.current_year.sum(:amount)
   end
   
   private
