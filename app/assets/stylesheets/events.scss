@@ -17,23 +17,15 @@
 }
 
 .card {
-  // background: linear-gradient(209.21deg, rgb(10, 78, 128) 13.57%, rgb(83, 179, 209) 98.38%);
-  // box-shadow: 2px 3px 15px #999;
   background: rgba( 107, 167, 227, 0.25 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 10.5px );
   -webkit-backdrop-filter: blur( 10.5px );
   border-radius: 30px !important;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-
   margin: 0 15px;
-  // border-radius: 20px;
   
   .card-body {
     border-radius: 30px;
-    
-    // .text {
-    //   color: #fff !important;
-    // }
   }
 }

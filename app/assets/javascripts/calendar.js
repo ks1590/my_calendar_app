@@ -9,8 +9,8 @@ initialize_calendar = function () {
     //   // right: 'month'
     header: {
       right: 'prev,next today',
-      center: 'title',
-      left: ''
+      center: '',
+      left: 'title'
     },
     // },
     // height: window.innerHeight - 80, // ①
