@@ -30,6 +30,7 @@ module MyCalendarApp
     # the framework and any gems in your application.
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'javascripts')
     Rails.application.config.assets.paths << Rails.root.join('vendor', 'stylesheets')
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets')
     # Don't generate system test files.
     config.generators.system_tests = nil
   end

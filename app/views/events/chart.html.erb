@@ -5,17 +5,17 @@
       <div class="row justify-content-around mb-5">
         <div class="col-xl-4 col-md-6 col-sm-6 p-2">
           <div class="chart">        
-            <%= high_chart("my_chart", @chart2) %>
+            <%= pie_chart [["1", 1000], ["2", 1100], ["2", 1500]],library: {title: {text: "支出<br>10000 "}} %>
           </div>
         </div>
         <div class="col-xl-4 col-md-6 col-sm-6 p-2">
           <div class="chart">        
-            <%= high_chart("my_chart2", @chart2) %>
+          
           </div>
         </div>
         <div class="col-xl-4 col-md-6 col-sm-6 p-2">
           <div class="chart">        
-            <%= high_chart("my_chart3", @chart2) %>
+          
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
     <div class="row">
       <div class="col-xl-11 col-lg-11 col-md-11 ml-auto">
         <div class="chart"> 
-          <%= high_chart("my_chart4", @chart) %>
+          
         </div>
       </div>
     </div>

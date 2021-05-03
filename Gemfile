@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem'lazy_high_charts'
 
+gem "chartkick"
+
 gem 'font-awesome-sass', '~> 5.8.1'
 
 gem 'autonumeric-rails'
