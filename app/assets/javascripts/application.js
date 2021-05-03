@@ -21,4 +21,5 @@
 //= require ja
 //= require autonumeric
 //= require turbolinks
+//= require highcharts/highcharts
 //= require_tree .
