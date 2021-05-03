@@ -9,8 +9,8 @@ initialize_calendar = function () {
     //   // right: 'month'
     header: {
       right: 'prev,next today',
-      center: 'title',
-      left: ''
+      center: '',
+      left: 'title'
     },
     // },
     // height: window.innerHeight - 80, // ①
@@ -26,6 +26,7 @@ initialize_calendar = function () {
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
+    eventColor: 'rgb(44, 50, 141)',
 
     select: function (start) {
       $.getScript("/events/new", function () {

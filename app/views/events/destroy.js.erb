@@ -1,2 +1,3 @@
 $('#calendar').fullCalendar('removeEvents', [<%= @event.id %>])
+$("#cards").html("<%= j(render 'card') %>");
 $('.modal').modal('hide');
