@@ -3,11 +3,21 @@ initialize_calendar = function () {
   $('#calendar').fullCalendar({
     selectable: true,
     dayMaxEvents: true,
+    // header: {
+    //   left: 'prev,next today',
+    //   center: 'title',
+    //   // right: 'month'
     header: {
-      left: 'prev,next today',
-      center: 'title',
-      // right: 'month'
+      right: 'prev,next today',
+      center: '',
+      left: 'title'
     },
+    // },
+    // height: window.innerHeight - 80, // ①
+    // windowResize: function () { // ②
+    //   $('#calendar').fullCalendar('option', 'height', window.innerHeight - 80);
+    //   $('#calendar').fullCalendar('option', 'width', window.innerWidth - 200);
+    // },
     selectable: true,
     selectHelper: true,
     eventLimit: true,
@@ -16,6 +26,7 @@ initialize_calendar = function () {
     events: "/events.json",
     color: 'yellow',
     textColor: 'black',
+    eventColor: 'rgb(44, 50, 141)',
 
     select: function (start) {
       $.getScript("/events/new", function () {

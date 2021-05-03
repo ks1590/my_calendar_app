@@ -1,0 +1,64 @@
+    <!-- cards -->
+    <section>
+      <div class="container-fluid">
+          <div class="col-xl-11 col-lg-11 col-md-11 ml-auto">
+            <%# <div class="row pt-md-5 mt-md-3 mb-5"> %>
+            <div class="row justify-content-around mb-4">
+              <div class="col-xl-3 col-md-5 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-users fa-3x text-info"></i>
+                      <div class="text-right text-secondary">
+                        <h5>今週の支出</h5>
+                        <h3><%= number_to_currency(@current_week, :locale => "ja") %></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-5 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-shopping-cart fa-3x text-warning"></i>
+                      <div class="text-right text-secondary">
+                        <h5>今月の支出</h5>
+                        <h3><%= number_to_currency(@current_month, :locale => "ja") %></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-5 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-money-bill-alt fa-3x text-success"></i>
+                      <div class="text text-right text-secondary">
+                        <h5>先月の支出</h5>
+                        <h3><%= number_to_currency(@last_month, :locale => "ja") %></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-5 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-chart-line fa-3x text-danger"></i>
+                      <div class="text-right text-secondary">
+                        <h5>今年の支出</h5>
+                        <h3><%= number_to_currency(@current_year, :locale => "ja") %></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </section>
+    <!-- end of cards -->

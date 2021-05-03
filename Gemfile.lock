@@ -43,6 +43,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    autonumeric-rails (2.0.0.1)
+      jquery-rails (>= 2.0.2)
     autoprefixer-rails (10.2.4.0)
       execjs
     awesome_print (1.8.0)
@@ -66,7 +68,11 @@ GEM
     crass (1.0.6)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.17.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.0)
+    font-awesome-sass (5.8.1)
+      sassc (>= 1.11)
     fullcalendar-rails (3.9.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
@@ -193,11 +199,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autonumeric-rails
   awesome_print
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5.3)
   byebug
   coffee-rails (~> 4.2)
+  faker
+  font-awesome-sass (~> 5.8.1)
   fullcalendar-rails
   jbuilder (~> 2.5)
   jquery-rails

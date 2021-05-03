@@ -8,6 +8,12 @@ gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem 'font-awesome-sass', '~> 5.8.1'
+
+gem 'autonumeric-rails'
+
+gem 'faker'
+
 gem 'bootstrap', '~> 4.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
