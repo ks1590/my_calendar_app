@@ -43,80 +43,188 @@ class EventsController < ApplicationController
   end
 
   def chart
-    sum_month_1 = Event.where(date: "2021-01-01".in_time_zone.all_month).sum(:amount)
-    sum_month_2 = Event.where(date: "2021-02-01".in_time_zone.all_month).sum(:amount)
-    sum_month_3 = Event.where(date: "2021-03-01".in_time_zone.all_month).sum(:amount)
-    sum_month_4 = Event.where(date: "2021-04-01".in_time_zone.all_month).sum(:amount)
-    sum_month_5 = Event.where(date: "2021-05-01".in_time_zone.all_month).sum(:amount)
-    sum_month_6 = Event.where(date: "2021-06-01".in_time_zone.all_month).sum(:amount)
-    sum_month_7 = Event.where(date: "2021-07-01".in_time_zone.all_month).sum(:amount)
-    sum_month_8 = Event.where(date: "2021-08-01".in_time_zone.all_month).sum(:amount)
-    sum_month_9 = Event.where(date: "2021-09-01".in_time_zone.all_month).sum(:amount)
-    sum_month_10 = Event.where(date: "2021-10-01".in_time_zone.all_month).sum(:amount)
-    sum_month_11 = Event.where(date: "2021-11-01".in_time_zone.all_month).sum(:amount)
-    sum_month_12 = Event.where(date: "2021-12-01".in_time_zone.all_month).sum(:amount)
+    @current_month = Event.current_month.sum(:amount).to_i
+    @current_month = @current_month.to_s.gsub(/(\d)(?=(\d{3})+(?!\d))/, '\1,')
 
     months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    product_A_sales = [ 1_000_000, 1_200_000, 1_300_000,
-      1_400_000, 1_200_000, 1_100_000, 1_000_000, 1_000_000, 1_000_000, 2_000_000, 1_055_000, 1_040_000]
-    product_B_sales = [   300_000,   500_000,   750_000,
-      1_150_000, 1_350_000, 1_600_000 ] 
-    product_C_sales = [   500_000,   500_000,   750_000,
-      1_150_000, 1_350_000, 1_600_000 ] 
-
-    anual_amount = [sum_month_1, sum_month_2, sum_month_3, sum_month_4, sum_month_5, sum_month_6, sum_month_7, sum_month_8, sum_month_9, sum_month_10, sum_month_11, sum_month_12]
-
-    @chart = LazyHighCharts::HighChart.new("graph") do |c|
-      c.title(text: "年間の支出")
-      c.xAxis(categories: months, title: {text: '月'})
-      # c.yAxis(title: {text: '円'},lang: {            
-      #       numericSymbols: [' thousands', ' millions']
-      #       })
-      c.series(name: "支出", data: anual_amount)
-      # c.legend(align: 'right', verticalAlign: 'top', 
-      #   x: -100, y: 180, layout: 'vertical')
-        
-        c.setOptions({
-          lang: {
-            numericSymbols: nil
-            # decimalPoint: '.',            
-            # thousandsSep: ','
-            }});
-      c.chart(type: "column")      
-    end
 
     @chart2 = LazyHighCharts::HighChart.new("graph") do |c|
-      c.title(text: "支出<br>#{sum_month_5}",verticalAlign: 'middle',floating: true)
+      c.title(text: "支出<br>#{@current_month}円", align: "center", verticalAlign: 'middle' )
+      # c.title(text: "支出：#{@current_month}円" )
       c.series({
-        colorByPoint: true,
-        # ここでは各月の売上額合計をグラフの値とする
+        colorByPoint: true,        
         data: [{
-        name: 'A',
-        y: product_A_sales.reduce{|sum,e| sum + e}
+        name: '食費',
+        y: Event.joins(:category).current_week.where(category_id: 1).sum(:amount)
         }, {
-        name: 'B', 
-        y: product_B_sales.reduce{|sum,e| sum + e}
+        name: '通信費', 
+        y: Event.joins(:category).current_week.where(category_id: 2).sum(:amount)
         }, {
-        name: '食費', 
-        y: product_C_sales.reduce{|sum,e| sum + e}
+        name: '交通費', 
+        y: Event.joins(:category).current_week.where(category_id: 3).sum(:amount)
+        }, {
+        name: 'ファッション', 
+        y: Event.joins(:category).current_week.where(category_id: 4).sum(:amount)
+        }, {
+        name: '美容', 
+        y: Event.joins(:category).current_week.where(category_id: 5).sum(:amount)
+        }, {
+        name: '消耗品', 
+        y: Event.joins(:category).current_week.where(category_id: 6).sum(:amount)
+        }, {
+        name: '学習', 
+        y: Event.joins(:category).current_week.where(category_id: 7).sum(:amount)
+        }, {
+        name: '家賃', 
+        y: Event.joins(:category).current_week.where(category_id: 8).sum(:amount)
+        }, {
+        name: 'コンテンツ', 
+        y: Event.joins(:category).current_week.where(category_id: 9).sum(:amount)
+        }]
+      })      
+      c.plotOptions(pie: {        
+        innerSize: '80%',
+        allowPointSelect: true,
+        cursor: 'pointer',          
+        dataLabels: {          
+          format: '{point.name}: {point.percentage:.1f} %',
+          enabled: true, 
+          distance: 0,
+          allowOverlap: false,
+          style: {
+            color: '#555',               
+            textAlign: 'center', 
+            textOutline: 0,
+          }}
+        })   
+      c.chart(type: "pie")              
+    end
+
+    @chart3 = LazyHighCharts::HighChart.new("graph") do |c|
+      c.title(text: "支出<br>#{@current_month}円", align: "center", verticalAlign: 'middle' )
+      # c.title(text: "支出：#{@current_month}円" )
+      c.series({
+        colorByPoint: true,        
+        data: [{
+        name: '食費',
+        y: Event.joins(:category).current_month.where(category_id: 1).sum(:amount)
+        }, {
+        name: '通信費', 
+        y: Event.joins(:category).current_month.where(category_id: 2).sum(:amount)
+        }, {
+        name: '交通費', 
+        y: Event.joins(:category).current_month.where(category_id: 3).sum(:amount)
+        }, {
+        name: 'ファッション', 
+        y: Event.joins(:category).current_month.where(category_id: 4).sum(:amount)
+        }, {
+        name: '美容', 
+        y: Event.joins(:category).current_month.where(category_id: 5).sum(:amount)
+        }, {
+        name: '消耗品', 
+        y: Event.joins(:category).current_month.where(category_id: 6).sum(:amount)
+        }, {
+        name: '学習', 
+        y: Event.joins(:category).current_month.where(category_id: 7).sum(:amount)
+        }, {
+        name: '家賃', 
+        y: Event.joins(:category).current_month.where(category_id: 8).sum(:amount)
+        }, {
+        name: 'コンテンツ', 
+        y: Event.joins(:category).current_month.where(category_id: 9).sum(:amount)
         }]
       })
-      
       c.plotOptions(pie: {        
-        innerSize: '70%',
+        innerSize: '80%',
         allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
+        cursor: 'pointer',          
+        dataLabels: {          
           format: '{point.name}: {point.percentage:.1f} %',
-        },
-        colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce',
-      '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
-        lang: {thousandsSep: ","}
-        })
-      c.chart(type: "pie")
-              
+          enabled: true, 
+          distance: 0,
+          allowOverlap: false,
+          style: {
+            color: '#555',               
+            textAlign: 'center', 
+            textOutline: 0,
+          }}
+        })      
+      c.chart(type: "pie")              
     end
+
+    @chart4 = LazyHighCharts::HighChart.new("graph") do |c|
+      c.title(text: "支出<br>#{@current_month}円", align: "center", verticalAlign: 'middle' )
+      # c.title(text: "支出：#{@current_month}円" )
+      c.series({
+        colorByPoint: true,        
+        data: [{
+        name: '食費',
+        y: Event.joins(:category).current_year.where(category_id: 1).sum(:amount)
+        }, {
+        name: '通信費', 
+        y: Event.joins(:category).current_year.where(category_id: 2).sum(:amount)
+        }, {
+        name: '交通費', 
+        y: Event.joins(:category).current_year.where(category_id: 3).sum(:amount)
+        }, {
+        name: 'ファッション', 
+        y: Event.joins(:category).current_year.where(category_id: 4).sum(:amount)
+        }, {
+        name: '美容', 
+        y: Event.joins(:category).current_year.where(category_id: 5).sum(:amount)
+        }, {
+        name: '消耗品', 
+        y: Event.joins(:category).current_year.where(category_id: 6).sum(:amount)
+        }, {
+        name: '学習', 
+        y: Event.joins(:category).current_year.where(category_id: 7).sum(:amount)
+        }, {
+        name: '家賃', 
+        y: Event.joins(:category).current_year.where(category_id: 8).sum(:amount)
+        }, {
+        name: 'コンテンツ', 
+        y: Event.joins(:category).current_year.where(category_id: 9).sum(:amount)
+        }]
+      })      
+      c.plotOptions(pie: {        
+        innerSize: '80%',
+        allowPointSelect: true,
+        cursor: 'pointer',          
+        dataLabels: {          
+          format: '{point.name}: {point.percentage:.1f} %',
+          enabled: true, 
+          distance: 0,
+          allowOverlap: false,
+          style: {
+            color: '#555',               
+            textAlign: 'center', 
+            textOutline: 0,
+          }}
+        })  
+      c.chart(type: "pie")              
+    end
+
+    @bar = LazyHighCharts::HighChart.new('column') do |f|
+      f.xAxis(categories: months, title: {text: '月'})
+      f.yAxis(:stackLabels=>{:enabled=> true},title: {text: '円'})
+      f.series(:name=>'食費',:data=> [300, 200, 320, 510, 430, 102, 122,300,300,300,3000,300 ])
+      f.series(:name=>'通信費',:data=>[100, 30, 400, 130, 230, 530, 340, 46,300,300,300,3000 ])
+      f.series(:name=>'交通費',:data=> [3300, 2020, 3220, 5110, 4230, 1302, 1122,3200,3500,300,300,300 ]) 
+      f.series(:name=>'ファッション',:data=> [3000, 1500, 1220, 4110, 2230, 902, 1522,1200,3100,300,300,300 ]) 
+      f.series(:name=>'美容',:data=> [3300, 2020, 3220, 5110, 4230, 1302, 1122,3200,300,300,3500,3900 ]) 
+      f.title({ :text=>"月別の支出"})
+      f.options[:chart][:defaultSeriesType] = "column"
+      f.plot_options({:column=>{:stacking=>"normal"},:series=>{:dataLabels=>{:enabled=> true}}})      
+      f.chart(type: "column",height: 550)  
+    end
+
+    @chart_globals = LazyHighCharts::HighChartGlobals.new do |f|
+      f.global(useUTC: false)
+      f.lang(thousandsSep: ",",
+      numericSymbols: nil)
+      # f.colors(["#f3d2c1", "#f9bc60", "#ffd803", "#abd1c6", "#bae8e8", "#fec7d7", "#ffa8ba", "#faae2b"])
+      f.colors(["#FF9202", "#FF91AF", "#88CED3", "#393C99", "#3F62C4", "#4587CA", "#B8D808", "#78B45C", "#FFE053"])
+    end    
   end
   
   private

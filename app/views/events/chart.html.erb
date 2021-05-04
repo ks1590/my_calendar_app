@@ -2,20 +2,21 @@
 <section>
   <div class="container-fluid">
     <div class="col-xl-11 col-lg-11 col-md-11 ml-auto">
-      <div class="row justify-content-around mb-5">
-        <div class="col-xl-4 col-md-6 col-sm-6 p-2">
-          <div class="chart">        
+      <div class="row justify-content-around mb-2">
+        <div class="col-xl-12 col-md-12 col-sm-12 p-2">
+          <div class="chart">
+            <%= high_chart_globals(@chart_globals) %>
             <%= high_chart("my_chart", @chart2) %>
           </div>
         </div>
-        <div class="col-xl-4 col-md-6 col-sm-6 p-2">
+        <div class="col-xl-6 col-md-12 col-sm-12 p-2">
           <div class="chart">        
-            <%= high_chart("my_chart2", @chart2) %>
+            <%= high_chart("my_chart2", @chart3) %>
           </div>
         </div>
-        <div class="col-xl-4 col-md-6 col-sm-6 p-2">
+        <div class="col-xl-6 col-md-12 col-sm-12 p-2">
           <div class="chart">        
-            <%= high_chart("my_chart3", @chart2) %>
+            <%= high_chart("my_chart3", @chart4) %>
           </div>
         </div>
       </div>
@@ -26,8 +27,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xl-11 col-lg-11 col-md-11 ml-auto">
-        <div class="chart"> 
-          <%= high_chart("my_chart4", @chart) %>
+        <div class="chart">          
+          <%= high_chart("my_bar_div", @bar) %>
         </div>
       </div>
     </div>
