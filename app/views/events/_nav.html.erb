@@ -1,31 +1,24 @@
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-light">
-      <button class="navbar-toggler ml-auto mb-2 bg-light" type="button" data-toggle="collapse" data-target="#myNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- sidebar -->
-            <div class="col-xl-1 col-lg-1 col-md-1 sidebar fixed-top">
-              <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Rabbit</a>
-              <div class="bottom-border pb-3">
-                <img src="" width="50" class="rounded-circle mr-3">
-                <a href="#" class="text-white">User Name</a>
-              </div>
-              <ul class="navbar-nav flex-column mt-4">
-                <li class="nav-item"><%= link_to "カレンダー", events_path %>
-                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>カレンダー</a></li>
-                <li class="nav-item"><%= link_to "チャート", chart_events_path %>
-                <a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>チャート</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-envelope text-light fa-lg mr-3"></i>履歴一覧</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-cog text-light fa-lg mr-3"></i>電卓</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-cog text-light fa-lg mr-3"></i>設定</a></li>
-              </ul>
-            </div>
-            <!-- end of sidebar -->
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- end of navbar -->
+<aside class="sidebar">
+  <div class="toggle">
+    <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+      <span></span>
+    </a>
+  </div>
+  <div class="side-inner">
+    <div class="profile">
+      <img src="" alt="Image" class="img-fluid">
+      <h3 class="name">Debby Williams</h3>
+      <span class="country">New York, USA</span>
+    </div>        
+    <div class="nav-menu">
+      <ul>
+        <li class="active"><a href="#"><span class="icon-home mr-3"></span>カレンダー</a></li>
+        <li><a href="#"><span class="icon-search2 mr-3"></span>チャート</a></li>
+        <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li>
+        <li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
+        <li><a href="#"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
+        <li><a href="#"><span class="icon-sign-out mr-3"></span>Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
