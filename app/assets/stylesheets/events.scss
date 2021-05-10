@@ -10,6 +10,13 @@
   min-height: 100vh;
 }
 
+.flex {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 992px) {
   .wrapper {
     flex-wrap: wrap;

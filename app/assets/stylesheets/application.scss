@@ -31,13 +31,17 @@ body {
   background: rgb(241, 240, 240);
 }
 
+.flex {
+  margin: 80px;
+}
+
 #calendar {
   background: #fff;
   box-shadow: 2px 3px 15px #999;
   width: 95%;
-  height: 100%;
-  margin: 0 25px;
-  border-radius: 30px;
+  height: 101%;
+  margin: 40px 70px;
+  border-radius: 20px;
 }
 
 .fc-left{
@@ -54,10 +58,6 @@ body {
   color: blue; 
 }
 
-.fc-day .fc-widget-content .fc-sat .fc-other-month .fc-future {
-  border-radius: 30px;
-}
-
 .fc-next-button {
   border-radius: 25px !important;
   margin-top: 20px !important;
@@ -72,4 +72,8 @@ body {
   border-radius: 25px !important;
   margin-top: 20px !important;
   margin-right: 20px !important;
+}
+
+.navbar-brand {
+  margin-top: 40px;
 }
