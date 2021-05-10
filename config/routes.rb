@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
   
   root 'events#index'
   resources :events do
@@ -10,5 +6,9 @@ Rails.application.routes.draw do
       get :chart
     end    
   end
-
+  
+  devise_for :users
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

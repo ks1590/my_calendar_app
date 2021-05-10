@@ -31,7 +31,7 @@ initialize_calendar = function () {
     select: function (start) {
       $.getScript("/events/new", function () {
         let str = moment(start).format('YYYY-MM-DD');
-        console.log(str);
+        // console.log(str);
         $(".start_hidden").val(str);
         $('#new_event').modal('show');
       })
@@ -41,7 +41,7 @@ initialize_calendar = function () {
       console.log(event);
       $.getScript(event.edit_url, function () {
         let str = moment(event).format('YYYY-MM-DD');
-        console.log(event);
+        // console.log(event);
         // $(".start_hidden").val(event);
         $('#edit_event').modal('show');
         // $.ajax({
