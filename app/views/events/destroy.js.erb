@@ -1,3 +1,7 @@
-$('#calendar').fullCalendar('removeEvents', [<%= @event.id %>])
-$("#cards").html("<%= j(render 'card') %>");
-$('.modal').modal('hide');
+<% if @status == 'fail' %>
+  alert('error!');
+<% else %>
+  $('#calendar').fullCalendar('removeEvents', [<%= @event.id %>])
+  $("#cards").html("<%= j(render 'card') %>");
+  $('.modal').modal('hide');
+<% end %>
