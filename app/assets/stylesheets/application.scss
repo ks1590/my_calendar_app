@@ -61,19 +61,30 @@ body {
 .fc-next-button {
   border-radius: 25px !important;
   margin-top: 20px !important;
+  outline: none !important;
 }
 
 .fc-prev-button {
   border-radius: 25px !important;
   margin-top: 20px !important;
+  outline: none !important;
 }
 
 .fc-today-button {
   border-radius: 25px !important;
   margin-top: 20px !important;
   margin-right: 20px !important;
+  outline: none !important;
 }
 
 .navbar-brand {
   margin-top: 40px;
 }
+
+.fc-event {
+  color: #081c15 !important;
+}
+
+// .fc-content {
+//   background: #ade8f4;
+// }

@@ -24,9 +24,9 @@ initialize_calendar = function () {
     editable: true,
     disableDragging: true,
     events: "/events.json",
-    color: 'yellow',
-    textColor: 'black',
-    eventColor: 'rgb(44, 50, 141)',
+    // color: 'yellow',
+    // textColor: 'black',
+    eventColor: '#d8f3dc',
 
     select: function (start) {
       $.getScript("/events/new", function () {
@@ -40,7 +40,7 @@ initialize_calendar = function () {
     eventClick: function (event, jsEvent, view) {
       console.log(event);
       $.getScript(event.edit_url, function () {
-        let str = moment(event).format('YYYY-MM-DD');
+        // let str = moment(event).format('YYYY-MM-DD');
         // console.log(event);
         // $(".start_hidden").val(event);
         $('#edit_event').modal('show');

@@ -1,4 +1,9 @@
 class Event < ApplicationRecord
+  validates :date, presence: true
+  validates :amount, presence: true
+  # validates :payment_id, presence: true
+  # validates :category_id, presence: true
+
   belongs_to :payment
   belongs_to :category
 

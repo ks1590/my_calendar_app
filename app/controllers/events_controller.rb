@@ -16,19 +16,50 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.save        
+    @event = Event.new(event_params)     
+    # @event.save
+    if @event.save      
+    else      
+      respond_to do |format|
+        # format.html
+        format.js { @status = "fail" }
+      end
+    end
+    # respond_to do |format|
+    #   if @event.save
+    #     # format.html { redirect_to root_path }
+    #     # format.json { render :json => @event }
+    #     # format.js { @status = "success" }
+    #     # format.js { render 'create.js.erb' }
+    #     format.html
+    #     format.json
+    #     format.js
+    #   else
+    #     # format.html { render :new, status: :unprocessable_entity }
+    #     # format.json { render json: @blog.errors, status: :unprocessable_entity }
+    #     format.html
+    #     format.js { @status = "fail" }
+    #   end
+    # end
+
     @current_week = Event.current_week.sum(:amount)
     @current_month = Event.current_month.sum(:amount)
     @last_month = Event.last_month.sum(:amount)
-    @current_year = Event.current_year.sum(:amount)    
+    @current_year = Event.current_year.sum(:amount)
   end
 
   def edit    
   end
 
   def update
-    @event.update(event_params)
+    if @event.update(event_params)
+    else      
+      respond_to do |format|
+        format.html
+        format.js { @status = "fail" }
+      end
+    end 
+    
     @current_week = Event.current_week.sum(:amount)
     @current_month = Event.current_month.sum(:amount)
     @last_month = Event.last_month.sum(:amount)
@@ -36,7 +67,14 @@ class EventsController < ApplicationController
   end  
 
   def destroy
-    @event.destroy
+    if @event.destroy
+    else      
+      respond_to do |format|
+        format.html
+        format.js { @status = "fail" }
+      end
+    end 
+    
     @current_week = Event.current_week.sum(:amount)
     @current_month = Event.current_month.sum(:amount)
     @last_month = Event.last_month.sum(:amount)
