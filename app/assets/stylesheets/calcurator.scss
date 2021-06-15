@@ -1,0 +1,113 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* background: linear-gradient(to right, #00AAFF, #00FF6C); */
+  background: rgb(190, 187, 187);
+}
+
+.modal-content {
+  width: 330px;
+  height: 530px;
+  background-color: #eaedef;
+  margin: 0 auto;    
+  border-radius: 10px;  
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2) ;
+}
+
+.calculator-grid {
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 330px;
+  height: 530px;
+  background-color: #eaedef;
+  margin: 0 auto;    
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2) ;
+
+  /* display: grid;
+  justify-content: center;
+  align-content: center; */
+  /* min-height: 100vh; */
+  /* grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px); */
+}
+
+.output {
+  height: 90px;
+  border-radius: 10px;
+}
+
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background: rgba(255, 255, 255, .75);
+  border-radius: 15px;
+    width: 50px;
+  height: 50px;
+  margin: 15px;
+  float: left;
+  border-radius: 50%;
+  border-width: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1;
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
+}
+
+button:nth-child(4) {
+  background: #20b2aa;
+}
+
+button:nth-child(8) {
+  background: #ffa500;
+}
+
+button:nth-child(12) {
+  background: #f08080;
+}
+
+button:nth-child(16) {
+  background: #7d93e0;
+}
+
+button:nth-child(20) {
+  background: #9477af;
+}
