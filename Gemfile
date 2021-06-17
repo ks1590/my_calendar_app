@@ -11,6 +11,7 @@ gem 'momentjs-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem'lazy_high_charts'
+gem 'kaminari'
 
 gem 'font-awesome-sass', '~> 5.8.1'
 

@@ -15,7 +15,12 @@
 //= require jquery.min
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery-ui.min
+//= require jquery-ui/widgets/mouse
+//= require jquery-ui/widgets/draggable
+//= require jquery-ui/widgets/droppable
+//= require jquery-ui/widgets/resizable
+//= require jquery-ui/widgets/selectable
+//= require jquery-ui/widgets/sortable
 //= require moment.min
 //= require fullcalendar.min
 //= require ja
@@ -56,7 +61,11 @@ $(function () {
       }
     }
   });
+});
 
-
-
+$(document).on("turbolinks:load", function () {
+  $("#myModal").draggable({
+    handle: ".modal-dialog",
+    cancel: false
+  })
 });
